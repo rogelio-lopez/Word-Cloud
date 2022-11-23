@@ -1,8 +1,42 @@
-const text = 'At Scorpion, we have the technology to connect all of your marketing and show you the results you expect from the money you spend. From our research and customer management software to our artificial intelligence-led search engine products, we have the latest technology to grow your business. Once the technology is in place, our team of specialists will partner with you along the way to handle all of the marketing for your business, so you can focus on providing a great experience to your customers.'
+let textButton = document.querySelector('#TextInput button'); 
+let textInput = document.querySelector('#TextInput textarea'); 
+let displayText = document.querySelector('#DisplayTextInput p'); 
+let displayTextArr = document.querySelector('#DisplayTextArr'); 
+let displayTextInput = document.querySelector('#DisplayTextInput'); 
+let displayWordList = document.querySelector('#DisplayWordList'); 
+let wordCloudContainer = document.querySelector('#WordCloudContainer'); 
 
 let arr = [];
+let cleanArr = [];
 
-text.split(' ').forEach(w => {
+// Display text from the input 
+textInput.addEventListener('input', (e) => {
+
+  displayTextInput.style.display = "block"; 
+  displayTextArr.innerHTML = ''; 
+
+  displayText.innerHTML = e.target.value; 
+});
+
+
+// Display text from the input 
+textButton.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  arr = textInput.value.split(' '); // With non chars  
+  cleanArr = arr.map(w => w.replace(/[^A-Za-z]/, '')); // Without non chars
+
+  displayTextInput.style.display = "none";
+
+  displayTextArr.innerHTML = arr.map(w => {
+    return `<p>${w}</p>`; 
+  }).join('');
+});
+
+
+
+
+arr.forEach(w => {
   
   let foundWord = false;
   let cleanWord = w.replace(/[^A-Za-z]/, '');
@@ -14,12 +48,6 @@ text.split(' ').forEach(w => {
       break;
     }
   }
-  if (!foundWord){
-    let newWord = new Object();
-    newWord.word = cleanWord;
-    newWord.count = 1;
-    arr.push(newWord);
-  }
+  
+  (foundWord)? '' : arr.push({ word: `${cleanWord}`, count: 1});
 });
-
-console.log(arr);
