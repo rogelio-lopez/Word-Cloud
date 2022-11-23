@@ -1,0 +1,68 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  min-width: 900px;
+  font-family: 'Roboto Mono';
+}
+
+.side{
+  padding: 10px;
+  width: 100%;
+  max-width: 350px;
+}
+.main{
+  width: calc(100% - 350px);
+}
+
+
+/* Side */
+.side h1{
+  font-size: 58px;
+}
+.side h4{
+  font-size: 14.5px;
+  padding-bottom: 20px;
+}
+
+#TextInput{
+  margin-bottom: 20px;
+}
+
+#TextInput textarea{
+  width: calc(100% - 10px);
+  border-radius: 10px;
+  border: solid 1px black;
+  padding: 5px;
+  font-size: 12px;
+}
+
+#TextInput button{
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: solid 1px black;
+  cursor: pointer;
+}
+#TextInput button:active{
+  scale: .95;
+}
+
+#DisplayTextInput,
+#DisplayTextArr {
+  font-size: 12px;
+}
+
+#DisplayTextArr {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+#DisplayTextArr p {
+  padding: 0 6.91px 0 0;
+}
