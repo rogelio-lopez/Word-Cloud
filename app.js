@@ -1,53 +1,43 @@
-let textButton = document.querySelector('#TextInput button'); 
-let textInput = document.querySelector('#TextInput textarea'); 
-let displayText = document.querySelector('#DisplayTextInput p'); 
-let displayTextArr = document.querySelector('#DisplayTextArr'); 
-let displayTextInput = document.querySelector('#DisplayTextInput'); 
-let displayWordList = document.querySelector('#DisplayWordList'); 
-let wordCloudContainer = document.querySelector('#WordCloudContainer'); 
+let button = document.querySelector('#Inputs button'); 
+let wordCountEl = document.querySelector('#WordCount'); 
+let wordCloudEl = document.querySelector('#WordCloud'); 
 
-let arr = [];
-let cleanArr = [];
+function startProgram(){
+  let og_arr = [];
+  let cleanArr = [];
+  let wordCountArr = [];
+
+  og_arr = textArea.value.split(' ').filter(n => n != ''); // split by space & filter no empty spaces 
+  
+  cleanArr = og_arr.map(w => { // Remove non char strings & capitalize the first letter
+    return (w.charAt(0).toUpperCase() + w.substring(1).toLowerCase()).replace(/[^A-Za-z]/, '');
+  });
+  
+  wordCountArr = getWordCount(cleanArr);
+  // displayTextAsArr(og_arr, inputText, splitText);
+
+  displayWordCounter(wordCountArr, wordCountEl);
+  displayWordCloud(wordCountArr, wordCloudEl);
+}
+
+
+let textArea = document.querySelector('#Inputs textarea');
+let inputText = document.querySelector('#InputText p'); 
+let splitText = document.querySelector('#SplitText'); 
 
 // Display text from the input 
-textInput.addEventListener('input', (e) => {
-
-  displayTextInput.style.display = "block"; 
-  displayTextArr.innerHTML = ''; 
-
-  displayText.innerHTML = e.target.value; 
+textArea.addEventListener('input', (e) => {
+  inputText.style.display = "block"; 
+  splitText.innerHTML = ''; 
+  inputText.innerHTML = e.target.value; 
 });
 
-
 // Display text from the input 
-textButton.addEventListener('click', (e) => {
+button.addEventListener('click', (e) => {
   e.preventDefault();
-
-  arr = textInput.value.split(' '); // With non chars  
-  cleanArr = arr.map(w => w.replace(/[^A-Za-z]/, '')); // Without non chars
-
-  displayTextInput.style.display = "none";
-
-  displayTextArr.innerHTML = arr.map(w => {
-    return `<p>${w}</p>`; 
-  }).join('');
+  startProgram(); 
 });
 
-
-
-
-arr.forEach(w => {
-  
-  let foundWord = false;
-  let cleanWord = w.replace(/[^A-Za-z]/, '');
-  
-  for (let w2 of arr){
-    if (cleanWord === w2.word){ // { obj.word, obj.count}
-      w2.count += 1;
-      foundWord = true;
-      break;
-    }
-  }
-  
-  (foundWord)? '' : arr.push({ word: `${cleanWord}`, count: 1});
-});
+/* TODO:
+ * reordering word cloud 
+ * */
