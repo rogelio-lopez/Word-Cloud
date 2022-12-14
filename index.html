@@ -11,30 +11,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <!--At Scorpion, we have the technology to connect all of your marketing and show you the results you expect from the money you spend. From our research and customer management software to our artificial intelligence-led search engine products, we have the latest technology to grow your business. Once the technology is in place, our team of specialists will partner with you along the way to handle all of the marketing for your business, so you can focus on providing a great experience to your customers.-->
     <div class='side'>
       <h1>Word Cloud</h1>
       <h4>Enter text here to generate a word cloud</h4>
       
-      <div id="TextInput">
+      <div id="Inputs">
         <textarea rows="6" type="text"></textarea>
         <button class="generate-btn">Generate</button>
       </div>
 
-
-      <div id="DisplayTextInput">
+      <!--Displays text from textarea--> 
+      <div id="InputText">
         <p></p>
       </div>
       
-      <div id="DisplayTextArr"></div>
+      <!--Same as above but in a split arr-->
+      <div id="SplitText"></div>
       
-      <div id="DisplayWordList"></div>
-
+      <!--Diplay word count-->
+      <div id="WordCount"></div>
     </div>
 
+    <!--Word Cloud area-->
     <div class='main'>
-
+      <div id="WordCloud"></div>
     </div>
+
 	  <script src="app.js"></script>
+    <script src="functions.js"></script>
   </body>
 </html>
