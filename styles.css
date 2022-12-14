@@ -8,15 +8,19 @@ body {
   width: 100vw;
   height: 100vh;
   min-width: 900px;
-  font-family: 'Roboto Mono';
+  font-family: 'Roboto Mono'; 
 }
 
 .side{
   padding: 10px;
   width: 100%;
   max-width: 350px;
+  overflow-y: scroll;
 }
 .main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: calc(100% - 350px);
 }
 
@@ -30,11 +34,11 @@ body {
   padding-bottom: 20px;
 }
 
-#TextInput{
+#Inputs{
   margin-bottom: 20px;
 }
 
-#TextInput textarea{
+#Inputs textarea{
   width: calc(100% - 10px);
   border-radius: 10px;
   border: solid 1px black;
@@ -42,27 +46,59 @@ body {
   font-size: 12px;
 }
 
-#TextInput button{
+#Inputs button{
   padding: 10px;
   margin-top: 10px;
   border-radius: 10px;
   border: solid 1px black;
   cursor: pointer;
 }
-#TextInput button:active{
+#Inputs button:active{
   scale: .95;
 }
 
-#DisplayTextInput,
-#DisplayTextArr {
+#InputText,
+#SplitText {
   font-size: 12px;
 }
 
-#DisplayTextArr {
+#SplitText {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
 }
-#DisplayTextArr p {
-  padding: 0 6.91px 0 0;
+
+#WordCount {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+#WordCount .word-count{
+  color: white;
+  width: fit-content;
+  padding: 5px 5px;
+  margin-right: 2.5px;
+  margin-top: 2.5px;
+  border-radius: 5px;
+  background: black;
+}
+#WordCount .word-count span{
+  padding: 0px 3px;
+  color: black;
+  border-radius: 2px;
+  background: white;
+}
+
+#WordCloud{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 80%;
+  width: 90%;
+}
+.word-cloud-el{
+  line-height: 1;
+  padding: 10px;
+  height: fit-content;
 }
